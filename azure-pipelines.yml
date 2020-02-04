@@ -6,8 +6,7 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'Borealis'
+pool: 'Borealis'
 
 variables:
   buildConfiguration: 'Release'
