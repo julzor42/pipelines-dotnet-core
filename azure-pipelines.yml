@@ -16,23 +16,30 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '.'
-    Contents: |
-      Dockerfile
-      .dockerignore
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+# - task: CopyFiles@2
+#   inputs:
+#     SourceFolder: '.'
+#     Contents: |
+#       Dockerfile
+#       .dockerignore
+#     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: publish
-    publishWebProjects: True
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: publish
+#     publishWebProjects: True
+#     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+#     zipAfterPublish: True
 
-# this code takes all the files in $(Build.ArtifactStagingDirectory) and uploads them as an artifact of your build.
-- task: PublishBuildArtifacts@1
+- task: Docker@2
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'drop'
+    containerRegistry: 'DockerTest'
+    repository: 'test-azure'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+
+# # this code takes all the files in $(Build.ArtifactStagingDirectory) and uploads them as an artifact of your build.
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+#     artifactName: 'drop'
