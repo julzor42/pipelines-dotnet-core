@@ -6,7 +6,9 @@
 trigger:
 - master
 
-pool: 'Borealis'
+#pool: 'Borealis'
+pool:
+  vzImage: 'ubuntu-latest'
 
 variables:
   buildConfiguration: 'Release'
