@@ -6,8 +6,8 @@
 trigger:
 - master
 
-pool: 'DockerTest'
-#pool: 'Borealis'
+#pool: 'DockerTest'
+pool: 'Borealis'
 #pool:
 #  vzImage: 'ubuntu-latest'
 
