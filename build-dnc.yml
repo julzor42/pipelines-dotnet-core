@@ -1,7 +1,8 @@
 trigger:
 - master
 
-pool: 'DockerTest'
+#pool: 'DockerTest'
+pool: 'Borealis'
 
 variables:
   buildConfiguration: 'Release'
