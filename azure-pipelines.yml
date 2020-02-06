@@ -13,3 +13,5 @@ steps:
     repository: 'julzor/test-azure'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
+    tags: |
+      latest
